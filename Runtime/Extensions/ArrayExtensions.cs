@@ -5,57 +5,57 @@ namespace com.liteninja.utils
 {
     public static class ArrayExtensions
     {
-        public static void Add<T>(this T[] values, T value)
+        public static void Add<T>(this T[] self, T value)
         {
-            Array.Resize(ref values, values.Length + 1);
-            values[^1] = value;
+            Array.Resize(ref self, self.Length + 1);
+            self[^1] = value;
         }
 
-        public static T[] Append<T>(this T[] array, params T[] items)
+        public static T[] Append<T>(this T[] self, params T[] items)
         {
-            if (array == null)
+            if (self == null)
             {
                 return items;
             }
 
-            var result = new T[array.Length + items.Length];
-            array.CopyTo(result, 0);
-            items.CopyTo(result, array.Length);
+            var result = new T[self.Length + items.Length];
+            self.CopyTo(result, 0);
+            items.CopyTo(result, self.Length);
             return result;
         }
 
-        public static void AddRange<T>(this T[] array, int count, IEnumerable<T> values)
+        public static void AddRange<T>(this T[] self, int count, IEnumerable<T> values)
         {
-            var startCount = array.Length;
-            Array.Resize(ref array, array.Length + count);
+            var startCount = self.Length;
+            Array.Resize(ref self, self.Length + count);
 
             foreach (var value in values)
             {
-                array[startCount++] = value;
+                self[startCount++] = value;
             }
         }
 
-        public static void RemoveAt<T>(this T[] values, int index)
+        public static void RemoveAt<T>(this T[] self, int index)
         {
-            if (index == values.Length - 1)
+            if (index == self.Length - 1)
             {
-                Array.Resize(ref values, index);
+                Array.Resize(ref self, index);
                 return;
             }
 
-            var result = new T[values.Length - 1];
+            var result = new T[self.Length - 1];
             if (index != 0)
             {
-                Array.Copy(values, 0, result, 0, index);
+                Array.Copy(self, 0, result, 0, index);
             }
 
-            Array.Copy(values, index + 1, result, index, values.Length - index - 1);
-            values = result;
+            Array.Copy(self, index + 1, result, index, self.Length - index - 1);
+            self = result;
         }
 
-        public static void Remove<T>(this T[] values, T value)
+        public static void Remove<T>(this T[] self, T value)
         {
-            values.RemoveAt(Array.IndexOf(values, value));
+            self.RemoveAt(Array.IndexOf(self, value));
         }
     }
 }
