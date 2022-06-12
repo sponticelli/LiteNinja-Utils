@@ -12,7 +12,6 @@ namespace com.liteninja.utils.editor
         private const string ConstantsFileName = "ConstantsReference";
         private const string TagsFileName = "Tags";
         private const string SortingLayersFileName = "SortingLayers";
-        private const string ScenesFileName = "Scenes";
         private const string LayersFileName = "Layers";
 
         [MenuItem("LiteNinja/Consts/Generate Constants")]
@@ -25,7 +24,6 @@ namespace com.liteninja.utils.editor
             fileContents += GenerateTags();
             fileContents += GenerateLayers();
             fileContents += GenerateSortingLayers();
-            fileContents += GenerateSceneConstants();
 
             fileContents += "}";
 
@@ -95,35 +93,6 @@ namespace com.liteninja.utils.editor
             }
 
             fileContents += "\t\t}\n";
-
-            fileContents += "\t}\n\n";
-
-            return fileContents;
-        }
-
-        private static string GenerateSceneConstants()
-        {
-            var sceneCount = SceneManager.sceneCountInBuildSettings;
-
-            var fileContents = "";
-
-            fileContents += "\tpublic static class " + ScenesFileName + "\n\t{\n";
-            for (var i = 0; i < sceneCount; i++)
-            {
-                var scene = SceneManager.GetSceneByBuildIndex(i);
-                scene.GetRootGameObjects();
-                fileContents += "\t\tpublic static class " + scene.name + "\n\t\t{\n";
-
-                fileContents += "\t\t\tpublic static readonly int index = " + i + ";\n";
-                fileContents += "\t\t\tpublic static readonly string name = \"" + scene.name + "\";\n";
-                fileContents += "\t\t\tpublic static readonly bool isLoaded = " + scene.isLoaded.ToString().ToLower() +
-                                ";\n";
-                fileContents += "\t\t\tpublic static readonly int rootCount = " + scene.rootCount + ";\n";
-                fileContents += "\t\t\tpublic static readonly GameObject[] root = SceneManager.GetSceneByBuildIndex(" + i +
-                                ").GetRootGameObjects();\n";
-
-                fileContents += "\t\t}\n";
-            }
 
             fileContents += "\t}\n\n";
 
