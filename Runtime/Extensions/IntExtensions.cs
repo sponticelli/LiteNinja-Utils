@@ -17,5 +17,10 @@ namespace com.liteninja.utils
         {
             return self > from && self < to;
         }
+
+        public static int Inverse(this int self)
+        {
+            return self * -1;
+        }
     }
 }

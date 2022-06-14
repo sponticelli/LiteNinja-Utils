@@ -1,6 +1,6 @@
 {
   "name": "com.liteninja.utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "LiteNinja Utils",
   "description": "A collection of utilities and common code required by other LiteNinja libraries",
   "unity": "2019.1",
@@ -10,7 +10,11 @@
   "dependencies": {
   },
   "keywords": [
-    "utility"
+    "utility",
+    "extensions",
+    "generics",
+    "helpers",
+    "utils"
   ],
   "author": {
     "name": "Sandro Ponticelli",

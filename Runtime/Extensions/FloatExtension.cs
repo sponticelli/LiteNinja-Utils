@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace com.liteninja.utils
@@ -78,6 +79,22 @@ namespace com.liteninja.utils
             float targetMin, float targetMax)
         {
             return targetMin + (self - sourceMin) * (targetMax - targetMin) / (sourceMax - sourceMin);
+        }
+
+        public static float Normalize(this float self, float min, float max)
+        {
+            return (self - min) / (max - min);
+        }
+
+        public static float Inverse(this float self)
+        {
+            return self * -1;
+        }
+        
+        
+        public static float Complement(this float self)
+        {
+            return 1.0f - self;
         }
     }
 }

@@ -250,29 +250,29 @@ namespace com.liteninja.utils
 
         public static bool SetAnchor(this RectTransform self, Anchors align)
         {
-            if (_anchorPresetsToVector4Map.ContainsKey(align) != true) return false;
-            var v4 = _anchorPresetsToVector4Map[align];
+            if (_anchorPresetsByType.ContainsKey(align) != true) return false;
+            var v4 = _anchorPresetsByType[align];
 
-            self.anchorMin = new Vector2(v4.x, v4.y);
-            self.anchorMax = new Vector2(v4.z, v4.w);
+            self.anchorMin = new Vector2(v4.minX, v4.minY);
+            self.anchorMax = new Vector2(v4.maxX, v4.maxY);
             return true;
         }
 
         public static Anchors GetAnchor(this RectTransform self)
         {
-            if (_vector4ToAnchorPresetsMap == null)
+            if (_anchorPresetsMap == null)
             {
-                _vector4ToAnchorPresetsMap = new Dictionary<Vector4, Anchors>();
-                foreach (var (key, value) in _anchorPresetsToVector4Map
-                    .Where(each => _vector4ToAnchorPresetsMap.ContainsKey(each.Value) == false))
+                _anchorPresetsMap = new Dictionary<AnchorPreset, Anchors>();
+                foreach (var (key, value) in _anchorPresetsByType
+                    .Where(each => _anchorPresetsMap.ContainsKey(each.Value) == false))
                 {
-                    _vector4ToAnchorPresetsMap.Add(value, key);
+                    _anchorPresetsMap.Add(value, key);
                 }
             }
 
-            var v4 = new Vector4(self.anchorMin.x, self.anchorMin.y, self.anchorMax.x, self.anchorMax.y);
-            return _vector4ToAnchorPresetsMap.ContainsKey(v4) == true
-                ? _vector4ToAnchorPresetsMap[v4]
+            var anchorPreset = new AnchorPreset(self.anchorMin.x, self.anchorMin.y, self.anchorMax.x, self.anchorMax.y);
+            return _anchorPresetsMap.ContainsKey(anchorPreset) == true
+                ? _anchorPresetsMap[anchorPreset]
                 : Anchors.None;
         }
 
@@ -511,33 +511,49 @@ namespace com.liteninja.utils
 
         #region private maps
 
-        private static readonly Dictionary<Anchors, Vector4> _anchorPresetsToVector4Map =
+        private class AnchorPreset
+        {
+            public float minX { get; private set; }
+            public float maxX { get; private set; }
+            public float minY { get; private set; }
+            public float maxY { get; private set; }
+
+            public AnchorPreset(float minX, float maxX, float minY, float maxY)
+            {
+                this.minX = minX;
+                this.maxX = maxX;
+                this.minY = minY;
+                this.maxY = maxY;
+            }
+        } 
+        
+        private static readonly Dictionary<Anchors, AnchorPreset> _anchorPresetsByType =
             new()
             {
-                { Anchors.TopLeft, new Vector4(0f, 1f, 0f, 1f) },
-                { Anchors.TopCenter, new Vector4(0.5f, 1f, 0.5f, 1f) },
-                { Anchors.TopRight, new Vector4(1f, 1f, 1f, 1f) },
+                { Anchors.TopLeft, new AnchorPreset(0f, 1f, 0f, 1f) },
+                { Anchors.TopCenter, new AnchorPreset(0.5f, 1f, 0.5f, 1f) },
+                { Anchors.TopRight, new AnchorPreset(1f, 1f, 1f, 1f) },
 
-                { Anchors.MiddleLeft, new Vector4(0f, 0.5f, 0f, 0.5f) },
-                { Anchors.MiddleCenter, new Vector4(0.5f, 0.5f, 0.5f, 0.5f) },
-                { Anchors.MiddleRight, new Vector4(1f, 0.5f, 1f, 0.5f) },
+                { Anchors.MiddleLeft, new AnchorPreset(0f, 0.5f, 0f, 0.5f) },
+                { Anchors.MiddleCenter, new AnchorPreset(0.5f, 0.5f, 0.5f, 0.5f) },
+                { Anchors.MiddleRight, new AnchorPreset(1f, 0.5f, 1f, 0.5f) },
 
-                { Anchors.BottomLeft, new Vector4(0f, 0f, 0f, 0f) },
-                { Anchors.BottomCenter, new Vector4(0.5f, 0f, 0.5f, 0f) },
-                { Anchors.BottomRight, new Vector4(1f, 0f, 1f, 0f) },
+                { Anchors.BottomLeft, new AnchorPreset(0f, 0f, 0f, 0f) },
+                { Anchors.BottomCenter, new AnchorPreset(0.5f, 0f, 0.5f, 0f) },
+                { Anchors.BottomRight, new AnchorPreset(1f, 0f, 1f, 0f) },
 
-                { Anchors.HorizontalStretchTop, new Vector4(0f, 1f, 1f, 1f) },
-                { Anchors.HorizontalStretchMiddle, new Vector4(0f, 0.5f, 1f, 0.5f) },
-                { Anchors.HorizontalStretchBottom, new Vector4(0f, 0f, 1f, 0f) },
+                { Anchors.HorizontalStretchTop, new AnchorPreset(0f, 1f, 1f, 1f) },
+                { Anchors.HorizontalStretchMiddle, new AnchorPreset(0f, 0.5f, 1f, 0.5f) },
+                { Anchors.HorizontalStretchBottom, new AnchorPreset(0f, 0f, 1f, 0f) },
 
-                { Anchors.VerticalStretchLeft, new Vector4(0f, 0f, 0f, 1f) },
-                { Anchors.VerticalStretchCenter, new Vector4(0.5f, 0f, 0.5f, 1f) },
-                { Anchors.VerticalStretchRight, new Vector4(1f, 0f, 1f, 1f) },
+                { Anchors.VerticalStretchLeft, new AnchorPreset(0f, 0f, 0f, 1f) },
+                { Anchors.VerticalStretchCenter, new AnchorPreset(0.5f, 0f, 0.5f, 1f) },
+                { Anchors.VerticalStretchRight, new AnchorPreset(1f, 0f, 1f, 1f) },
 
-                { Anchors.StretchAll, new Vector4(0f, 0f, 1f, 1f) }
+                { Anchors.StretchAll, new AnchorPreset(0f, 0f, 1f, 1f) }
             };
 
-        private static Dictionary<Vector4, Anchors> _vector4ToAnchorPresetsMap = null;
+        private static Dictionary<AnchorPreset, Anchors> _anchorPresetsMap = null;
 
         private static readonly Dictionary<Pivots, Vector2> _pivotPresetsToVector2Map =
             new()

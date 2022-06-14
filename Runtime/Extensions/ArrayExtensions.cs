@@ -57,5 +57,10 @@ namespace com.liteninja.utils
         {
             self.RemoveAt(Array.IndexOf(self, value));
         }
+
+        public static bool HasIndex<T>(this T[] self, int index)
+        {
+            return index.IsInRangeInclusive(0, self.Length - 1);
+        }
     }
 }

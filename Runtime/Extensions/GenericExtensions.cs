@@ -11,5 +11,11 @@ namespace com.liteninja.utils
         {
             return values.Any(n => n.Equals(self));
         }
+
+        public static T ReplaceIf<T>(this T self, T value, T newValue = default)
+        {
+            return self.Equals(value) ? newValue : self;
+        }
+
     }
 }
