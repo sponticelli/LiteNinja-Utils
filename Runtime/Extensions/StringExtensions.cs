@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 using static System.Int64;
 using static System.String;
 
@@ -12,6 +13,11 @@ namespace com.liteninja.utils
 {
     public static class StringExtensions
     {
+        public static string Colored(this string self, Color color)
+        {
+            return $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{self}</color>";
+        }
+        
         /// <summary>
         ///  Checks if a string is null
         /// </summary>
@@ -152,6 +158,30 @@ namespace com.liteninja.utils
             return self;
         }
 
+        public static int IndexOfNonWhiteSpace(this string self, int startIndex = 0)
+        {
+            for (; startIndex < self.Length; startIndex++)
+            {
+                if (!char.IsWhiteSpace(self, startIndex)) return startIndex;
+            }
+
+            return -1;
+        }
+
+        public static int LastIndexOfNonWhiteSpace(this string self, int startIndex)
+        {
+            for (; startIndex >= 0; startIndex--)
+            {
+                if (!char.IsWhiteSpace(self, startIndex)) return startIndex;
+            }
+
+            return -1;
+        }
+
+        public static int LastIndexOfNonWhiteSpace(this string self)
+        {
+            return LastIndexOfNonWhiteSpace(self, self.Length - 1);
+        }
 
         /// <summary>
         /// Validate email address
@@ -418,6 +448,13 @@ namespace com.liteninja.utils
             return result;
         }
 
+        public static string[] Split(this string str, int chunkSize)
+        {
+            return Enumerable.Range(0, str.Length / chunkSize)
+                .Select(i => str.Substring(i * chunkSize, chunkSize))
+                .ToArray();
+        }
+
         #region Boolean
 
         /// <summary>
@@ -533,6 +570,49 @@ namespace com.liteninja.utils
         }
 
         #endregion
+
+        public static T Cast<T>(this string self)
+        {
+            var selfType = typeof(T);
+
+            if (!selfType.IsPrimitive && !selfType.IsEnum) 
+                throw new NotSupportedException("This method only supports primitive types and Enums.");
+
+            if (selfType.IsPrimitive)
+            {
+                if (selfType != typeof(bool)) return (T)Convert.ChangeType(self, selfType);
+                if (int.TryParse(self, out var intInput))
+                {
+                    return (T)Convert.ChangeType(intInput, selfType);
+                }
+
+                return (T)Convert.ChangeType(self, selfType);
+            }
+            
+            try
+            {
+                return (T)Enum.Parse(selfType, self);
+            }
+            catch
+            {
+                if (!int.TryParse(self, out var intInput)) throw;
+                var allValues = Enum.GetValues(selfType);
+
+                if (intInput < 0 || intInput > allValues.Length - 1)
+                {
+                    throw new IndexOutOfRangeException(
+                        "The 'input' is out of the range of the target enum's array of values.");
+                }
+
+                return (T)allValues.GetValue(intInput);
+            }
+        }
+        
+        public static Color32 ToColor(this string hexColor)
+        {
+            ColorUtility.TryParseHtmlString(hexColor, out var color);
+            return color;
+        }
 
         #region Time
 

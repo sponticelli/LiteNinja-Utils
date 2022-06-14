@@ -5,7 +5,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-### [1.0.4] - 2022-06-14 
+### [1.0.5] - 2022-06-15
+### Added
+- AnimationCurve extensions
+- Bitwise extensions
+- Color32 extensions
+- Component extensions
+- DateTime extensions
+- Dictionary extensions
+- Gradient extensions
+- MonoBehaviour extensions
+- Quaternion extensions
+- Texture extensions
+- Unity Typed Events
+### Changed
+- Add bitwise operations to integer extensions
+- Add more Camera extensions
+- More GameObject extensions
+- More IEnumerable extensions
+- More List and IList extensions
+- More float extensions
+
+## [1.0.4] - 2022-06-14 
 ### Added
 - More extensions
 

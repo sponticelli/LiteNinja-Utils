@@ -5,6 +5,14 @@ namespace com.liteninja.utils
 {
     public static class FloatExtension
     {
+        
+        /// <summary>
+        /// Checks if this float is NaN.
+        /// </summary>
+        public static bool IsNaN(this float f)
+        {
+            return float.IsNaN(f);
+        }
         public static bool ApproxEquals(this float self, float f2)
         {
             return Mathf.Approximately(self, f2);
@@ -90,11 +98,16 @@ namespace com.liteninja.utils
         {
             return self * -1;
         }
-        
-        
+
         public static float Complement(this float self)
+        {return 1.0f - self;
+        }
+
+        
+        
+        public static float ToGoldenRatioProportion(this float self)
         {
-            return 1.0f - self;
+            return  1.618033988749894848f * self;
         }
     }
 }

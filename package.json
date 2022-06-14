@@ -1,6 +1,6 @@
 {
   "name": "com.liteninja.utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "displayName": "LiteNinja Utils",
   "description": "A collection of utilities and common code required by other LiteNinja libraries",
   "unity": "2019.1",

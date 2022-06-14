@@ -8,6 +8,11 @@ namespace com.liteninja.utils
 {
     public static class IEnumerableExtensions
     {
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> self)
+        {
+            return self == null || !self.Any();
+        }
+        
         public static void ForEach<TSource>(this IEnumerable<TSource> self, Action<TSource> func)
         {
             if (func == null) return;
@@ -66,6 +71,26 @@ namespace com.liteninja.utils
             Func<TSource, TKey> selector)
         {
             return self.Distinct(new CommonSelector<TSource, TKey>(selector));
+        }
+        
+        public static IEnumerable<T> Log<T>(this IEnumerable<T> self)
+        {
+            foreach (var item in self)
+            {
+                UnityEngine.Debug.Log(item);
+            }
+
+            return self;
+        }
+        
+        public static bool None<TSource>(this IEnumerable<TSource> source)
+        {
+            return !source.Any();
+        }
+
+        public static bool None<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        {
+            return !source.Any(predicate);
         }
 
         /// <summary>

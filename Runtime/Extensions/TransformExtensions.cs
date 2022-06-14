@@ -8,6 +8,15 @@ namespace com.liteninja.utils
 {
     public static class TransformExtensions
     {
+        public static Transform Clone(this Transform self, string rename = null)
+        {
+            var name = self.name;
+            if (!string.IsNullOrEmpty(rename)) name = rename;
+            var clone = new GameObject(name);
+            clone.transform.AlignTo(self);
+            clone.transform.localScale = self.lossyScale;
+            return clone.transform;
+        }
         public static float SqrDistance(this Transform self, Transform other)
         {
             return self.position.SqrDistance(other.position);
@@ -54,17 +63,23 @@ namespace com.liteninja.utils
 
         public static void SetPositionX(this Transform self, float x)
         {
-            self.position = new Vector3(x, self.position.y, self.position.z);
+            var position = self.position;
+            position = new Vector3(x, position.y, position.z);
+            self.position = position;
         }
 
         public static void SetPositionY(this Transform self, float y)
         {
-            self.position = new Vector3(self.position.x, y, self.position.z);
+            var position = self.position;
+            position = new Vector3(position.x, y, position.z);
+            self.position = position;
         }
 
         public static void SetPositionZ(this Transform self, float z)
         {
-            self.position = new Vector3(self.position.x, self.position.y, z);
+            var position = self.position;
+            position = new Vector3(position.x, position.y, z);
+            self.position = position;
         }
 
         public static void AddPositionX(this Transform self, float x)
@@ -84,17 +99,23 @@ namespace com.liteninja.utils
 
         public static void SetLocalPositionX(this Transform self, float x)
         {
-            self.localPosition = new Vector3(x, self.localPosition.y, self.localPosition.z);
+            var localPosition = self.localPosition;
+            localPosition = new Vector3(x, localPosition.y, localPosition.z);
+            self.localPosition = localPosition;
         }
 
         public static void SetLocalPositionY(this Transform self, float y)
         {
-            self.localPosition = new Vector3(self.localPosition.x, y, self.localPosition.z);
+            var localPosition = self.localPosition;
+            localPosition = new Vector3(localPosition.x, y, localPosition.z);
+            self.localPosition = localPosition;
         }
 
         public static void SetLocalPositionZ(this Transform self, float z)
         {
-            self.localPosition = new Vector3(self.localPosition.x, self.localPosition.y, z);
+            var localPosition = self.localPosition;
+            localPosition = new Vector3(localPosition.x, localPosition.y, z);
+            self.localPosition = localPosition;
         }
 
         public static void AddLocalPositionX(this Transform self, float x)
@@ -114,17 +135,23 @@ namespace com.liteninja.utils
 
         public static void SetEulerAngleX(this Transform self, float x)
         {
-            self.eulerAngles = new Vector3(x, self.eulerAngles.y, self.eulerAngles.z);
+            var eulerAngles = self.eulerAngles;
+            eulerAngles = new Vector3(x, eulerAngles.y, eulerAngles.z);
+            self.eulerAngles = eulerAngles;
         }
 
         public static void SetEulerAngleY(this Transform self, float y)
         {
-            self.eulerAngles = new Vector3(self.eulerAngles.x, y, self.eulerAngles.z);
+            var eulerAngles = self.eulerAngles;
+            eulerAngles = new Vector3(eulerAngles.x, y, eulerAngles.z);
+            self.eulerAngles = eulerAngles;
         }
 
         public static void SetEulerAngleZ(this Transform self, float z)
         {
-            self.eulerAngles = new Vector3(self.eulerAngles.x, self.eulerAngles.y, z);
+            var eulerAngles = self.eulerAngles;
+            eulerAngles = new Vector3(eulerAngles.x, eulerAngles.y, z);
+            self.eulerAngles = eulerAngles;
         }
 
         public static void AddEulerAngleX(this Transform self, float x)
@@ -144,17 +171,23 @@ namespace com.liteninja.utils
 
         public static void SetLocalEulerAngleX(this Transform self, float x)
         {
-            self.localEulerAngles = new Vector3(x, self.localEulerAngles.y, self.localEulerAngles.z);
+            var localEulerAngles = self.localEulerAngles;
+            localEulerAngles = new Vector3(x, localEulerAngles.y, localEulerAngles.z);
+            self.localEulerAngles = localEulerAngles;
         }
 
         public static void SetLocalEulerAngleY(this Transform self, float y)
         {
-            self.localEulerAngles = new Vector3(self.localEulerAngles.x, y, self.localEulerAngles.z);
+            var localEulerAngles = self.localEulerAngles;
+            localEulerAngles = new Vector3(localEulerAngles.x, y, localEulerAngles.z);
+            self.localEulerAngles = localEulerAngles;
         }
 
         public static void SetLocalEulerAngleZ(this Transform self, float z)
         {
-            self.localEulerAngles = new Vector3(self.localEulerAngles.x, self.localEulerAngles.y, z);
+            var localEulerAngles = self.localEulerAngles;
+            localEulerAngles = new Vector3(localEulerAngles.x, localEulerAngles.y, z);
+            self.localEulerAngles = localEulerAngles;
         }
 
         public static void AddLocalEulerAngleX(this Transform self, float x)
@@ -174,17 +207,23 @@ namespace com.liteninja.utils
 
         public static void SetLocalScaleX(this Transform self, float x)
         {
-            self.localScale = new Vector3(x, self.localScale.y, self.localScale.z);
+            var localScale = self.localScale;
+            localScale = new Vector3(x, localScale.y, localScale.z);
+            self.localScale = localScale;
         }
 
         public static void SetLocalScaleY(this Transform self, float y)
         {
-            self.localScale = new Vector3(self.localScale.x, y, self.localScale.z);
+            var localScale = self.localScale;
+            localScale = new Vector3(localScale.x, y, localScale.z);
+            self.localScale = localScale;
         }
 
         public static void SetLocalScaleZ(this Transform self, float z)
         {
-            self.localScale = new Vector3(self.localScale.x, self.localScale.y, z);
+            var localScale = self.localScale;
+            localScale = new Vector3(localScale.x, localScale.y, z);
+            self.localScale = localScale;
         }
 
         public static void AddLocalScaleX(this Transform self, float x)
@@ -208,6 +247,54 @@ namespace com.liteninja.utils
             self.localScale = Vector3.one;
             self.localRotation = Quaternion.identity;
         }
+        
+        public static void LookAt(this Transform self, GameObject target)
+        {
+            self.LookAt(target.transform);
+        }
+        
+        public static Quaternion GetLookAtRotation(this Transform self, Vector3 target)
+        {
+            return Quaternion.LookRotation(target - self.position);
+        }
+        public static Quaternion GetLookAtRotation(this Transform self, Transform target)
+        {
+            return GetLookAtRotation(self, target.position);
+        }
+        public static Quaternion GetLookAtRotation(this Transform self, GameObject target)
+        {
+            return GetLookAtRotation(self, target.transform.position);
+        }
+        public static void LookAwayFrom(this Transform self, Vector3 target)
+        {
+            self.rotation = GetLookAwayFromRotation(self, target);
+        }
+        public static void LookAwayFrom(this Transform self, Transform target)
+        {
+            self.rotation = GetLookAwayFromRotation(self, target);
+        }
+        public static void LookAwayFrom(this Transform self, GameObject target)
+        {
+            self.rotation = GetLookAwayFromRotation(self, target);
+        }
+        public static Quaternion GetLookAwayFromRotation(this Transform self, Vector3 target)
+        {
+            return Quaternion.LookRotation(self.position - target);
+        }
+        public static Quaternion GetLookAwayFromRotation(this Transform self, Transform target)
+        {
+            return GetLookAwayFromRotation(self, target.position);
+        }
+        public static Quaternion GetLookAwayFromRotation(this Transform self, GameObject target)
+        {
+            return GetLookAwayFromRotation(self, target.transform.position);
+        }
+        
+        public static void AlignTo(this Transform me, Transform other)
+        {
+            me.position = other.position;
+            me.rotation = me.rotation;
+        }
 
         /// <summary>
         /// Sets sibling index to previous.
@@ -226,6 +313,22 @@ namespace com.liteninja.utils
         /// </summary>
         public static List<Transform> GetChildren(this Transform self) => Enumerable.Range(0, self.childCount)
             .Select(self.GetChild).ToList();
+        
+        public static Transform FindDeepChild(this Transform self, string name, bool includeInactive = true)
+        {
+            var result = self.Find(name);
+            if (result != null)
+                return result;
+
+            foreach (Transform child in self)
+            {
+                result = child.FindDeepChild(name);
+                if (result != null)
+                    return result;
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Adds children to transform.
@@ -245,13 +348,13 @@ namespace com.liteninja.utils
         /// <summary>
         /// Destroy all children.
         /// </summary>
-        public static void DestroyChilds(this Transform self) =>
+        public static void DestroyChildren(this Transform self) =>
             GetChildren(self).ForEach(child => Object.Destroy(child.gameObject));
 
         /// <summary>
         /// Destroy all children by condition.
         /// </summary>
-        public static void DestroyChildrenChildsWhere(this Transform self, Predicate<Transform> predicate)
+        public static void DestroyChildrenChildrenWhere(this Transform self, Predicate<Transform> predicate)
         {
             var filtered = GetChildren(self).Where(c => predicate(c));
 
@@ -274,5 +377,48 @@ namespace com.liteninja.utils
         /// Destroy last child.
         /// </summary>
         public static void DestroyLastChild(this Transform self) => DestroyChild(self, self.childCount - 1);
+        
+        public static void TraverseHierarchy(this Transform self, Action<Transform> operate, int depthLimit = -1)
+        {
+            operate(self);
+
+            if (depthLimit == 0) return;
+            var count = self.childCount;
+            for (var i = 0; i < count; i++)
+            {
+                TraverseHierarchy(self.GetChild(i), operate, depthLimit - 1);
+            }
+        }
+
+        public static void InverseTraverseHierarchy(this Transform self, Action<Transform> operate, int depthLimit = -1)
+        {
+            if (depthLimit != 0)
+            {
+                var count = self.childCount;
+                for (var i = 0; i < count; i++)
+                {
+                    InverseTraverseHierarchy(self.GetChild(i), operate, depthLimit - 1);
+                }
+            }
+
+            operate(self);
+        }
+
+        public static Transform SearchHierarchy(this Transform self, Predicate<Transform> match, int depthLimit = -1)
+        {
+            if (match(self)) return self;
+            if (depthLimit == 0) return null;
+
+            var count = self.childCount;
+            Transform result = null;
+
+            for (var i = 0; i < count; i++)
+            {
+                result = SearchHierarchy(self.GetChild(i), match, depthLimit - 1);
+                if (result) break;
+            }
+
+            return result;
+        }
     }
 }

@@ -44,5 +44,24 @@ namespace com.liteninja.utils
             IEnumerable<TSource> remove = self.Where(func).ToList();
             remove.ForEach(x => self.Remove(x));
         }
+        
+        public static void Resize<T>(this List<T> self, int newSize, T newValue = default)
+        {
+            if (self.Count == newSize) return;
+            if (self.Count > newSize)
+            {
+                self.RemoveRange(newSize, self.Count - newSize);
+            }
+            else
+            {
+                var addCount = newSize - self.Count;
+
+                while (addCount > 0)
+                {
+                    self.Add(newValue);
+                    addCount--;
+                }
+            }
+        }
     }
 }
