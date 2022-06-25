@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
+
+
     public class LazyDictionary<TKey, TValue> : LazyDictionaryBase<TKey, TValue> where TValue : class
     {
-        private readonly Dictionary<TKey, Provider> _values = new Dictionary<TKey, Provider>();
+        private readonly Dictionary<TKey, Provider> _values = new();
 
         public void Add(TKey key, Func<TValue> factory)
         {

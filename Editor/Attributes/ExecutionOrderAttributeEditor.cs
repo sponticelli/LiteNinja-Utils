@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LiteNinja.Utils.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.liteninja.utils.editor
+namespace LiteNinja.Utils.Editor
 {
     public static class ExecutionOrderAttributeEditor
     {

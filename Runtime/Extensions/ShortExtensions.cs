@@ -1,4 +1,4 @@
-﻿namespace com.liteninja.utils
+﻿namespace LiteNinja.Utils.Extensions
 {
     public static class ShortExtensions
     {

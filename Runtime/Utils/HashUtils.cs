@@ -1,8 +1,9 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using LiteNinja.Utils.Extensions;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     public static class HashUtils
     {

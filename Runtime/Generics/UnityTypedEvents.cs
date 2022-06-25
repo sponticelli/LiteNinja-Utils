@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     [Serializable]
     public class UnityEventInt : UnityEvent<int>

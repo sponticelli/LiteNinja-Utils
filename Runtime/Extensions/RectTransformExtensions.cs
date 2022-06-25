@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class RectTransformExtensions
     {
@@ -270,7 +270,9 @@ namespace com.liteninja.utils
                 }
             }
 
-            var anchorPreset = new AnchorPreset(self.anchorMin.x, self.anchorMin.y, self.anchorMax.x, self.anchorMax.y);
+            var anchorMin = self.anchorMin;
+            var anchorMax = self.anchorMax;
+            var anchorPreset = new AnchorPreset(anchorMin.x, anchorMin.y, anchorMax.x, anchorMax.y);
             return _anchorPresetsMap.ContainsKey(anchorPreset) == true
                 ? _anchorPresetsMap[anchorPreset]
                 : Anchors.None;
@@ -297,7 +299,8 @@ namespace com.liteninja.utils
                 }
             }
 
-            var v2 = new Vector2(self.pivot.x, self.pivot.y);
+            var pivot = self.pivot;
+            var v2 = new Vector2(pivot.x, pivot.y);
             return _vector2ToPivotPresets.ContainsKey(v2) ? _vector2ToPivotPresets[v2] : Pivots.None;
         }
 
@@ -355,13 +358,15 @@ namespace com.liteninja.utils
                 case Anchors.HorizontalStretchTop:
                 case Anchors.HorizontalStretchMiddle:
                 case Anchors.HorizontalStretchBottom:
-                    return new Vector2(self.anchoredPosition.x, -self.anchoredPosition.y);
+                    var anchoredPosition = self.anchoredPosition;
+                    return new Vector2(anchoredPosition.x, -anchoredPosition.y);
                 case Anchors.VerticalStretchLeft:
                 case Anchors.VerticalStretchCenter:
                 case Anchors.VerticalStretchRight:
                     break;
                 case Anchors.StretchAll:
-                    return new Vector2(self.anchoredPosition.x, -self.anchoredPosition.y);
+                    var position = self.anchoredPosition;
+                    return new Vector2(position.x, -position.y);
                 case Anchors.None:
                     break;
                 default:
@@ -487,7 +492,8 @@ namespace com.liteninja.utils
                 {
                     var parent = self.parent.GetComponent<RectTransform>();
                     var size = parent.GetSize();
-                    return new Vector2(self.sizeDelta.x, size.y + self.sizeDelta.y);
+                    var sizeDelta = self.sizeDelta;
+                    return new Vector2(sizeDelta.x, size.y + sizeDelta.y);
                 }
                 case Anchors.VerticalStretchLeft:
                 case Anchors.VerticalStretchCenter:
@@ -495,7 +501,8 @@ namespace com.liteninja.utils
                 {
                     var parent = self.parent.GetComponent<RectTransform>();
                     var size = parent.GetSize();
-                    return new Vector2(size.x + self.sizeDelta.x, self.sizeDelta.y);
+                    var sizeDelta = self.sizeDelta;
+                    return new Vector2(size.x + sizeDelta.x, sizeDelta.y);
                 }
                 case Anchors.StretchAll:
                 {

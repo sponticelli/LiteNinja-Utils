@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class SceneExtensions
     {

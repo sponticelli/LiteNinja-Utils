@@ -1,6 +1,6 @@
 using System;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Attributes
 {
     /// <summary>
     /// [ExecuteAfter(<type>[, orderIncrease = <increase>])]

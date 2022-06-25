@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     /// <summary>
     /// A ScriptableObject with an editor-only field for inserting a description

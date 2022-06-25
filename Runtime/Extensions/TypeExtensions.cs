@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class TypeExtensions
     {

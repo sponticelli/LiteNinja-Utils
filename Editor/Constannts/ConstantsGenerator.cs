@@ -3,11 +3,10 @@ using UnityEditor;
 using UnityEditorInternal;
 using System.IO;
 using UnityEditor.Callbacks;
-using UnityEngine.SceneManagement;
 
-namespace com.liteninja.utils.editor
+namespace LiteNinja.Utils.Editor
 {
-    public class ConstantsGenerator : Editor
+    public class ConstantsGenerator : UnityEditor.Editor
     {
         private const string ConstantsFileName = "ConstantsReference";
         private const string TagsFileName = "Tags";

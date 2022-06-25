@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class Vector3IntExtensions
     {
@@ -13,5 +13,12 @@ namespace com.liteninja.utils
         {
             return new Vector2Int(Mathf.RoundToInt(self.x), Mathf.RoundToInt(self.y));
         }
+        
+        public static Vector2Int ToVector2IntYZ(this Vector3Int self)
+        {
+            return new Vector2Int(Mathf.RoundToInt(self.y), Mathf.RoundToInt(self.z));
+        }
+        
+        
     }
 }

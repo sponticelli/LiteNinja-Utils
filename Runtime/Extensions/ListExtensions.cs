@@ -3,7 +3,7 @@ using System.Linq;
 using System;
 using UnityRandom = UnityEngine.Random;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class ListExtensions
     {

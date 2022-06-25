@@ -1,7 +1,8 @@
+using LiteNinja.Utils.Attributes;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.liteninja.utils.editor
+namespace LiteNinja.Utils.Editor
 {
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer

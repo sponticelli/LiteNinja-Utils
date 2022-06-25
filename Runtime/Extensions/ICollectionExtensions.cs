@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class ICollectionExtensions
     {

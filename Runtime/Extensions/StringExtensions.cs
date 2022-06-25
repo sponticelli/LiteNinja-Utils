@@ -9,7 +9,7 @@ using UnityEngine;
 using static System.Int64;
 using static System.String;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class StringExtensions
     {

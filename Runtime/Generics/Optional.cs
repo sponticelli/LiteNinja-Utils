@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     [Serializable]
     public struct Optional<T>

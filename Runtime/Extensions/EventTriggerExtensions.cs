@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class EventTriggerExtensions
     {

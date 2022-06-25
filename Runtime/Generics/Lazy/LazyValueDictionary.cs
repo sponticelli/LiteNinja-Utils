@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     public class LazyValueDictionary<TKey, TValue> : LazyDictionaryBase<TKey, TValue> where TValue : struct
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class RenderTextureExtensions {
         public static Texture2D ToTexture2D(this RenderTexture rTex)

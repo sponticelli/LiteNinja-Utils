@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class DateTimeExtensions
     {

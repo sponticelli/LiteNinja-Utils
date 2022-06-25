@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     public static class DebugDrawHelper
     {

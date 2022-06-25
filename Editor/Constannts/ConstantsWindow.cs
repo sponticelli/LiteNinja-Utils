@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
-namespace com.liteninja.utils.editor
+namespace LiteNinja.Utils.Editor
 {
     public class ConstantsWindow : EditorWindow
     {

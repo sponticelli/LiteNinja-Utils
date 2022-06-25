@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class IntExtensions
     {

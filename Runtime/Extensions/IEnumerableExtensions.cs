@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityRandom = UnityEngine.Random;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils.Extensions
 {
     public static class IEnumerableExtensions
     {

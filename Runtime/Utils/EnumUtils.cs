@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace com.liteninja.utils
+namespace LiteNinja.Utils
 {
     public class EnumUtils
     {
