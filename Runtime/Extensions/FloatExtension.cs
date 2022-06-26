@@ -5,7 +5,6 @@ namespace LiteNinja.Utils.Extensions
 {
     public static class FloatExtension
     {
-        
         /// <summary>
         /// Checks if this float is NaN.
         /// </summary>
@@ -13,6 +12,7 @@ namespace LiteNinja.Utils.Extensions
         {
             return float.IsNaN(f);
         }
+
         public static bool ApproxEquals(this float self, float f2)
         {
             return Mathf.Approximately(self, f2);
@@ -100,14 +100,36 @@ namespace LiteNinja.Utils.Extensions
         }
 
         public static float Complement(this float self)
-        {return 1.0f - self;
+        {
+            return 1.0f - self;
+        }
+        
+        public static bool Approximately(this float self, float f2)
+        {
+            return Mathf.Approximately(self, f2);
+        }
+        
+        public static bool Approximately(this float self, float f2, float tolerance)
+        {
+            return Mathf.Abs(self - f2) < tolerance;
         }
 
-        
-        
+
+        #region Golden Ratio
         public static float ToGoldenRatioProportion(this float self)
         {
-            return  1.618033988749894848f * self;
+            return 1.618033988749894848f * self;
         }
+
+        public static float ToGoldenRatio(this float self)
+        {
+            return 1.618033988749894848f * self - 0.618033988749894848f;
+        }
+
+        public static float ToGoldenRatioInverse(this float self)
+        {
+            return 0.618033988749894848f + 1.618033988749894848f * self;
+        }
+        #endregion
     }
 }
