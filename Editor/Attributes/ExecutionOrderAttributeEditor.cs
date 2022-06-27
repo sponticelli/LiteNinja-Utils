@@ -13,8 +13,8 @@ namespace LiteNinja.Utils.Editor
         {
             public struct Edge
             {
-                public MonoScript node;
-                public int weight;
+                public MonoScript Node;
+                public int Weight;
             }
 
             public static Dictionary<MonoScript, List<Edge>> Create(
@@ -33,7 +33,7 @@ namespace LiteNinja.Utils.Editor
                         graph.Add(source, edges);
                     }
 
-                    edges.Add(new Edge { node = dest, weight = dependency.orderDelta });
+                    edges.Add(new Edge { Node = dest, Weight = dependency.orderDelta });
                     if (!graph.ContainsKey(dest))
                     {
                         graph.Add(dest, new List<Edge>());
@@ -59,7 +59,7 @@ namespace LiteNinja.Utils.Editor
 
                 foreach (var edge in graph[node])
                 {
-                    var nextNode = edge.node;
+                    var nextNode = edge.Node;
                     if (!IsCyclicRecursion(graph, nextNode, visited, inPath)) continue;
                     inPath[node] = false;
                     return true;
@@ -91,7 +91,7 @@ namespace LiteNinja.Utils.Editor
                     select kvp.Value
                     into edges
                     from edge in edges
-                    select edge.node)
+                    select edge.Node)
                 {
                     degrees[nextNode]++;
                 }
@@ -115,10 +115,10 @@ namespace LiteNinja.Utils.Editor
 
                     foreach (var edge in graph[node])
                     {
-                        var nextNode = edge.node;
-                        var newValue = currentValue + edge.weight;
+                        var nextNode = edge.Node;
+                        var newValue = currentValue + edge.Weight;
                         var hasPrevValue = values.TryGetValue(nextNode, out var prevValue);
-                        var newValueBeyond = edge.weight > 0 ? newValue > prevValue : newValue < prevValue;
+                        var newValueBeyond = edge.Weight > 0 ? newValue > prevValue : newValue < prevValue;
                         if (hasPrevValue && !newValueBeyond) continue;
                         values[nextNode] = newValue;
                         queue.Enqueue(nextNode);

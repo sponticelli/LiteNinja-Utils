@@ -20,7 +20,7 @@ namespace LiteNinja.Utils
 
         public static TEnum[] GetValues<TEnum>()
         {
-            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray<TEnum>();
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
         }
 
         public static TEnum Parse<TEnum>(object value)

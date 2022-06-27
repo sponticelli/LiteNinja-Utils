@@ -19,8 +19,9 @@ namespace LiteNinja.Utils.Extensions
         public static void Replace<TSource>(this List<TSource> self, IEnumerable<TSource> src, Func<TSource, TSource, bool> func)
         {
             if (func == null) return;
-            var adds = src.Where(x => !self.Any(y => func(x, y)));
-            var removes = self.Where(x => !src.Any(y => func(x, y)));
+            var enumerable = src as TSource[] ?? src.ToArray();
+            var adds = enumerable.Where(x => !self.Any(y => func(x, y)));
+            var removes = self.Where(x => !enumerable.Any(y => func(x, y)));
             adds.ForEach(self.Add);
             removes.ForEach(x => self.Remove(x));
         }

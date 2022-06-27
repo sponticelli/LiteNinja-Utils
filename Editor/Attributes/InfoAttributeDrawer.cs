@@ -7,9 +7,9 @@ namespace LiteNinja.Utils.Editor
     [CustomPropertyDrawer(typeof(InfoAttribute))]
     public class InfoAttributeDrawer : PropertyDrawer
     {
-        private const int spaceBeforeTheTextBox = 5;
-        private const int spaceAfterTheTextBox = 10;
-        private const int iconWidth = 55;
+        private const int SpaceBeforeTheTextBox = 5;
+        private const int SpaceAfterTheTextBox = 10;
+        private const int IconWidth = 55;
 
         private InfoAttribute informationAttribute => ((InfoAttribute) attribute);
 
@@ -22,7 +22,7 @@ namespace LiteNinja.Utils.Editor
                 rect.height = DetermineTextboxHeight(informationAttribute.Message);
                 EditorGUI.HelpBox(rect, informationAttribute.Message, MessageType.Info);
 
-                rect.y += rect.height + spaceBeforeTheTextBox;
+                rect.y += rect.height + SpaceBeforeTheTextBox;
                 EditorGUI.PropertyField(rect, prop, label, true);
             }
             else
@@ -34,7 +34,7 @@ namespace LiteNinja.Utils.Editor
                 rect.height = DetermineTextboxHeight(informationAttribute.Message);
                 // we add the complete property height (property + helpbox, as overridden in this very script), and substract both to get just the property
                 rect.y += GetPropertyHeight(prop, label) - DetermineTextboxHeight(informationAttribute.Message) -
-                          spaceAfterTheTextBox;
+                          SpaceAfterTheTextBox;
                 EditorGUI.HelpBox(rect, informationAttribute.Message, MessageType.Info);
             }
         }
@@ -43,7 +43,7 @@ namespace LiteNinja.Utils.Editor
         {
 
             return EditorGUI.GetPropertyHeight(property) + DetermineTextboxHeight(informationAttribute.Message) +
-                   spaceAfterTheTextBox + spaceBeforeTheTextBox;
+                   SpaceAfterTheTextBox + SpaceBeforeTheTextBox;
         }
 
 
@@ -54,7 +54,7 @@ namespace LiteNinja.Utils.Editor
                 richText = true
             };
 
-            var newHeight = style.CalcHeight(new GUIContent(message), EditorGUIUtility.currentViewWidth - iconWidth);
+            var newHeight = style.CalcHeight(new GUIContent(message), EditorGUIUtility.currentViewWidth - IconWidth);
             return newHeight;
         }
     }

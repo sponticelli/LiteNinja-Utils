@@ -273,7 +273,7 @@ namespace LiteNinja.Utils.Extensions
             var anchorMin = self.anchorMin;
             var anchorMax = self.anchorMax;
             var anchorPreset = new AnchorPreset(anchorMin.x, anchorMin.y, anchorMax.x, anchorMax.y);
-            return _anchorPresetsMap.ContainsKey(anchorPreset) == true
+            return _anchorPresetsMap.ContainsKey(anchorPreset)
                 ? _anchorPresetsMap[anchorPreset]
                 : Anchors.None;
         }
@@ -560,7 +560,7 @@ namespace LiteNinja.Utils.Extensions
                 { Anchors.StretchAll, new AnchorPreset(0f, 0f, 1f, 1f) }
             };
 
-        private static Dictionary<AnchorPreset, Anchors> _anchorPresetsMap = null;
+        private static Dictionary<AnchorPreset, Anchors> _anchorPresetsMap;
 
         private static readonly Dictionary<Pivots, Vector2> _pivotPresetsToVector2Map =
             new()

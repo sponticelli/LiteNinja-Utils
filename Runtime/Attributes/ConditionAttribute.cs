@@ -4,12 +4,11 @@ using UnityEngine;
 namespace LiteNinja.Utils.Attributes
 {
     [AttributeUsage(
-        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct,
-        Inherited = true)]
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct)]
     public class ConditionAttribute : PropertyAttribute
     {
         public string ConditionBoolean = "";
-        public bool Hidden = false;
+        public bool Hidden;
 
         public ConditionAttribute(string conditionBoolean)
         {

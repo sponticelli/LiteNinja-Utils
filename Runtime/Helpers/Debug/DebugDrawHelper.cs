@@ -146,7 +146,7 @@ namespace LiteNinja.Utils
         {
             var halfSize = size / 2f;
 
-            var points = new Vector3[]
+            var points = new[]
             {
                 position + new Vector3(halfSize.x, halfSize.y, halfSize.z),
                 position + new Vector3(-halfSize.x, halfSize.y, halfSize.z),
@@ -183,7 +183,7 @@ namespace LiteNinja.Utils
         {
             var halfSize = size / 2f;
 
-            var points = new Vector3[]
+            var points = new[]
             {
                 position + new Vector3(halfSize.x, halfSize.y, halfSize.z),
                 position + new Vector3(-halfSize.x, halfSize.y, halfSize.z),
@@ -202,7 +202,7 @@ namespace LiteNinja.Utils
         /// </summary>
         public static void DrawPoint(Vector3 position, Color color, float size)
         {
-            var points = new Vector3[]
+            var points = new[]
             {
                 position + (Vector3.up * size),
                 position - (Vector3.up * size),
