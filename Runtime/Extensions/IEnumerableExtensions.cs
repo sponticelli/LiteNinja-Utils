@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityRandom = UnityEngine.Random;
 
 namespace LiteNinja.Utils.Extensions
@@ -77,7 +78,7 @@ namespace LiteNinja.Utils.Extensions
         {
             foreach (var item in self)
             {
-                UnityEngine.Debug.Log(item);
+                Debug.Log(item);
             }
 
             return self;

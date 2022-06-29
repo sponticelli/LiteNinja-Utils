@@ -1,9 +1,51 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace LiteNinja.Utils.Extensions
 {
     public static class IntExtensions
     {
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the integer is negative
+        /// </summary>
+        public static int ThrowIfNegative(this int self, string message = null)
+        {
+            if (self < 0)
+            {
+                throw new ArgumentOutOfRangeException(message ?? "Value is negative.");
+            }
+
+            return self;
+        }
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the int is not between min and max (inclusive)
+        /// </summary>
+        public static int ThrowIfNotInRangeInclusive(this int self, int min, int max, string message = null)
+        {
+            if (self < min || self > max)
+            {
+                throw new ArgumentOutOfRangeException(message ?? $"Value is not between {min} and {max}.");
+            }
+
+            return self;
+        }
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the int is not between min and max (exclusive)
+        /// </summary>
+        public static int ThrowIfNotInRangeExclusive(this int self, int min, int max, string message = null)
+        {
+            if (self <= min || self >= max)
+            {
+                throw new ArgumentOutOfRangeException(message ?? $"Value is not between {min} and {max}.");
+            }
+
+            return self;
+        }
+        
         /// <summary>
         /// Returns if the value is in the defined range of values, including @from and @to
         /// </summary>

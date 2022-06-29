@@ -23,7 +23,7 @@ namespace LiteNinja.Utils.Extensions
             return ToString(anObject, aFormat, null);
         }
 
-        public static string ToString(this object anObject, string aFormat, IFormatProvider formatProvider)
+        private static string ToString(this object anObject, string aFormat, IFormatProvider formatProvider)
         {
             var sb = new StringBuilder();
             var type = anObject.GetType();
@@ -104,5 +104,14 @@ namespace LiteNinja.Utils.Extensions
 
             return sb.ToString();
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 }

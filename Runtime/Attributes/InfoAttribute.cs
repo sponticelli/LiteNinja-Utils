@@ -10,8 +10,8 @@ namespace LiteNinja.Utils.Attributes
         
         public InfoAttribute(string message, bool showAfterProperty)
         {
-            this.Message = message;
-            this.ShowAfterProperty = showAfterProperty;
+            Message = message;
+            ShowAfterProperty = showAfterProperty;
         }
 #else
         public InfoAttribute(string message, bool messageAfterProperty)

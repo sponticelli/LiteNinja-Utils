@@ -17,6 +17,45 @@ namespace LiteNinja.Utils.Extensions
         {
             return Mathf.Approximately(self, f2);
         }
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the float is negative
+        /// </summary>
+        public static float ThrowIfNegative(this float self, string message = null)
+        {
+            if (self < 0)
+            {
+                throw new ArgumentOutOfRangeException(message ?? "Value is negative.");
+            }
+
+            return self;
+        }
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the float is not between min and max (inclusive)
+        /// </summary>
+        public static float ThrowIfNotInRangeInclusive(this float self, float min, float max, string message = null)
+        {
+            if (self < min || self > max)
+            {
+                throw new ArgumentOutOfRangeException(message ?? $"Value is not between {min} and {max}.");
+            }
+
+            return self;
+        }
+        
+        /// <summary>
+        /// Throws a ArgumentOutOfRange exception if the float is not between min and max (exclusive)
+        /// </summary>
+        public static float ThrowIfNotInRangeExclusive(this float self, float min, float max, string message = null)
+        {
+            if (self <= min || self >= max)
+            {
+                throw new ArgumentOutOfRangeException(message ?? $"Value is not between {min} and {max}.");
+            }
+
+            return self;
+        }
 
         /// <summary>
         /// Returns if the value is in the defined range of values, including @from and @to

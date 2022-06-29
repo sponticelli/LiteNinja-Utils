@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace LiteNinja.Utils.Extensions
@@ -17,5 +18,18 @@ namespace LiteNinja.Utils.Extensions
             return self.Equals(value) ? newValue : self;
         }
 
+        
+        /// <summary>
+        /// Throw a NullReferenceException if the object is null.
+        /// </summary>
+        public static T ThrowIfNull<T>(this T self, string message = null) where T : class
+        {
+            if (self == null)
+            {
+                throw new NullReferenceException(message ?? "Object is null.");
+            }
+
+            return self;
+        }
     }
 }
