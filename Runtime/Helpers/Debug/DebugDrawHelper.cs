@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace LiteNinja.Utils
+namespace LiteNinja.Utils.Helpers
 {
     public static class DebugDrawHelper
     {

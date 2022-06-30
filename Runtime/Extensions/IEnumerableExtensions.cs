@@ -158,5 +158,33 @@ namespace LiteNinja.Utils.Extensions
                 return _selector(obj).GetHashCode();
             }
         }
+        
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> self)
+        {
+            var list = self.ToList();
+            for (var i = 0; i < list.Count; i++)
+            {
+                var j = UnityRandom.Range(0, list.Count);
+                (list[i], list[j]) = (list[j], list[i]);
+            }
+
+            return list;
+        }
+        
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> self, int seed)
+        {
+            var list = self.ToList();
+            for (var i = 0; i < list.Count; i++)
+            {
+                var j = UnityRandom.Range(0, list.Count);
+                (list[i], list[j]) = (list[j], list[i]);
+            }
+
+            return list;
+        }
+        
+        
+        
+        
     }
 }

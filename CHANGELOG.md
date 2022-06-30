@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.3] - 2022-06-30
+### Added
+- Extension for System.Random to generate normally distributed random numbers.
+### Changed
+- Converted from Generator to IEnumerable/IEnumerator pattern.
+
 ## [1.1.2] - 2022-06-29
 ### Added
 - A Generic L-System
