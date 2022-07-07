@@ -183,6 +183,19 @@ namespace LiteNinja.Utils.Extensions
             return list;
         }
         
+        public static RangeMap<T> ToRangeMap<T>(this IEnumerable<T> values, Func<T, T, float, T> interpolation)
+        {
+            var map = new RangeMap<T>(interpolation);
+            var step = 1f / values.Count();
+            var i = 0f;
+            foreach (var value in values)
+            {
+                map.Add(i, value);
+                i += step;
+            }
+            return map;
+        }
+        
         
         
         
