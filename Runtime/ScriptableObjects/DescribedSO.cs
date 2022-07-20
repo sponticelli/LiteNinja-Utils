@@ -11,4 +11,5 @@ namespace LiteNinja.Utils
         [SerializeField][TextArea] protected string description;
 #endif
     }
+    
 }

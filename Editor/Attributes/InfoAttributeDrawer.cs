@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LiteNinja.Utils.Editor
 {
+    
     [CustomPropertyDrawer(typeof(InfoAttribute))]
     public class InfoAttributeDrawer : PropertyDrawer
     {
@@ -58,4 +59,5 @@ namespace LiteNinja.Utils.Editor
             return newHeight;
         }
     }
+    
 }

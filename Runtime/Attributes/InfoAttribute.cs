@@ -7,7 +7,7 @@ namespace LiteNinja.Utils.Attributes
 #if UNITY_EDITOR
         public string Message;
         public bool ShowAfterProperty;
-        
+
         public InfoAttribute(string message, bool showAfterProperty)
         {
             Message = message;

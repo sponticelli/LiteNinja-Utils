@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace LiteNinja.Utils.Attributes
 {
+    
     [AttributeUsage(
         AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct)]
     public class ConditionAttribute : PropertyAttribute

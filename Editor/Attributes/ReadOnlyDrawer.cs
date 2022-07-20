@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LiteNinja.Utils.Editor
 {
+    
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer
     {
@@ -15,4 +16,5 @@ namespace LiteNinja.Utils.Editor
             GUI.enabled = previousGUIState;
         }
     }
+    
 }

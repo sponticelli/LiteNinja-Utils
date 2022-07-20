@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace LiteNinja.Utils.Editor
 {
+    
     public static class ExecutionOrderAttributeEditor
     {
         private static class Graph

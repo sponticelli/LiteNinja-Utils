@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace LiteNinja.Utils.Editor
 {
+    
     [CustomPropertyDrawer(typeof(ConditionAttribute))]
     public class ConditionAttributeDrawer : PropertyDrawer
     {
@@ -52,4 +53,5 @@ namespace LiteNinja.Utils.Editor
             return -EditorGUIUtility.standardVerticalSpacing;
         }
     }
+    
 }
